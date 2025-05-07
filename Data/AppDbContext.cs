@@ -14,14 +14,24 @@ namespace ContractAPI.Data
         {
             modelBuilder.Entity<Kontrak>().HasKey(k => k.KontrakNo);
 
+            modelBuilder.Entity<JadwalAngsuran>().HasKey(j => new { j.KontrakNo, j.AngsuranKe });
+            
             modelBuilder.Entity<Kontrak>()
-                        .ToTable("kontrak")
+                        .ToTable("kontrak");
+
+            modelBuilder.Entity<JadwalAngsuran>()
+                    .ToTable("jadwal_angsuran");
+
+            modelBuilder.Entity<Kontrak>()
                         .HasMany(k => k.JadwalAngsurans)
                         .WithOne(j => j.Kontrak)
                         .HasForeignKey(j => j.KontrakNo);
 
             modelBuilder.Entity<JadwalAngsuran>()
-                    .ToTable("jadwal_angsuran");
+                        .HasOne(j => j.Kontrak)
+                        .WithMany(k => k.JadwalAngsurans)
+                        .HasForeignKey(j => j.KontrakNo);
+
         }
     }
 

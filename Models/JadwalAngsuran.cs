@@ -6,8 +6,6 @@ namespace ContractAPI.Models
     [Table("jadwal_angsuran")]
     public class JadwalAngsuran
     {
-        public int Id { get; set; }
-        
         [Column("kontrak_no")]
         [ForeignKey("Kontrak")]
         public string KontrakNo { get; set; } = string.Empty;

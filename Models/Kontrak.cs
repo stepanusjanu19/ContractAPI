@@ -9,6 +9,7 @@ namespace ContractAPI.Models
         public string KontrakNo { get; set; } = string.Empty;
         [Column("client_name")]
         public string ClientName { get; set; } = string.Empty;
+        [Column("otr")]
         public decimal OTR { get; set; }
         public List<JadwalAngsuran> JadwalAngsurans { get; set; } = new();
     }
